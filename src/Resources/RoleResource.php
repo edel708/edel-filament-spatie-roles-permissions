@@ -8,6 +8,7 @@ use Althinect\FilamentSpatieRolesPermissions\Resources\RoleResource\Pages\ListRo
 use Althinect\FilamentSpatieRolesPermissions\Resources\RoleResource\Pages\ViewRole;
 use Althinect\FilamentSpatieRolesPermissions\Resources\RoleResource\RelationManager\PermissionRelationManager;
 use Althinect\FilamentSpatieRolesPermissions\Resources\RoleResource\RelationManager\UserRelationManager;
+use BackedEnum;
 use Filament\Facades\Filament;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
@@ -15,6 +16,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -25,14 +27,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class RoleResource extends Resource
 {
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::ShieldCheck;
+
     public static function isScopedToTenant(): bool
     {
         return config('filament-spatie-roles-permissions.scope_roles_to_tenant', config('filament-spatie-roles-permissions.scope_to_tenant', true));
-    }
-
-    public static function getNavigationIcon(): ?string
-    {
-        return  config('filament-spatie-roles-permissions.icons.role_navigation');
     }
 
     public static function shouldRegisterNavigation(): bool

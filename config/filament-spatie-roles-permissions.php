@@ -5,6 +5,7 @@ return [
     'resources' => [
         'PermissionResource' => \Althinect\FilamentSpatieRolesPermissions\Resources\PermissionResource::class,
         'RoleResource' => \Althinect\FilamentSpatieRolesPermissions\Resources\RoleResource::class,
+        'UserResource' => \Althinect\FilamentSpatieRolesPermissions\Resources\Users\UserResource::class,
     ],
 
     'preload_roles' => true,
@@ -16,9 +17,10 @@ return [
     'team_model' => \App\Models\Team::class,
 
     'scope_to_tenant' => true,
-    
+
     'scope_roles_to_tenant' => true,
     'scope_premissions_to_tenant' => false,
+    'scope_users_to_tenant' => false,
 
     'super_admin_role_name' => 'Super Admin',
 
@@ -28,6 +30,7 @@ return [
     'should_register_on_navigation' => [
         'permissions' => true,
         'roles' => true,
+        'users' => true
     ],
 
     'should_show_permissions_for_roles' => true,
@@ -78,6 +81,7 @@ return [
     'clusters' => [
         'permissions' => null,
         'roles' => null,
+        'users' => null,
     ],
 
     'guard_names' => [
@@ -126,6 +130,7 @@ return [
     'icons' => [
         'role_navigation' => 'heroicon-o-lock-closed',
         'permission_navigation' => 'heroicon-o-lock-closed',
+        'user_navigation' => 'heroicon-o-lock-closed',
     ],
 
     /*
@@ -134,7 +139,8 @@ return [
 
     'sort' => [
         'role_navigation' => false,
-        'permission_navigation' => false
+        'permission_navigation' => false,
+        'user_navigation' => false
     ],
 
     'generator' => [
@@ -204,7 +210,7 @@ return [
         ],
 
         'excluded_policy_models' => [
-            \App\Models\User::class,
+            Althinect\FilamentSpatieRolesPermissions\Models\User::class,
         ],
 
         /*
@@ -214,7 +220,7 @@ return [
             //'view-log'
         ],
 
-        'user_model' => \App\Models\User::class,
+        'user_model' => Althinect\FilamentSpatieRolesPermissions\Models\User::class,
 
         'user_model_class' => 'User',
 

@@ -1,7 +1,10 @@
 # Changelog
 
-All notable changes to `filament-spatie-roles-permissions` will be documented in this file
+## [Unreleased]
+
+### Added
+- Exposed UserResource in Filament plugin resources
 
 ## 1.0.0 - 201X-XX-XX
 
-- initial release
+- Initial release

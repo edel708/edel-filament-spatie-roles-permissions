@@ -7,6 +7,7 @@ use Althinect\FilamentSpatieRolesPermissions\Resources\PermissionResource\Pages\
 use Althinect\FilamentSpatieRolesPermissions\Resources\PermissionResource\Pages\ListPermissions;
 use Althinect\FilamentSpatieRolesPermissions\Resources\PermissionResource\Pages\ViewPermission;
 use Althinect\FilamentSpatieRolesPermissions\Resources\PermissionResource\RelationManager\RoleRelationManager;
+use BackedEnum;
 use Filament\Facades\Filament;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
@@ -18,6 +19,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Actions\BulkAction;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
@@ -28,14 +30,11 @@ use Spatie\Permission\Models\Role;
 
 class PermissionResource extends Resource
 {
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::LockClosed;
+
     public static function isScopedToTenant(): bool
     {
         return config('filament-spatie-roles-permissions.scope_premissions_to_tenant', config('filament-spatie-roles-permissions.scope_to_tenant', true));
-    }
-
-    public static function getNavigationIcon(): ?string
-    {
-        return  config('filament-spatie-roles-permissions.icons.permission_navigation');
     }
 
     public static function shouldRegisterNavigation(): bool
